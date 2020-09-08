@@ -44,10 +44,15 @@ module.exports = {
 			});
 		}
 
-		const clone = async () => {
+		const clone = async (is_base_repo) => {
+			let branch_cmd = '';
+			if (!is_base_repo) {
+				branch_cmd = `-b ${TARGET_BRANCH} --single-branch`;
+			}
+
 			// TODO [#16]: allow customizing the branch
 			return execCmd(
-				`git clone --depth 1 -b ${TARGET_BRANCH} --single-branch https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${getRepoPath(
+				`git clone --depth 1 ${branch_cmd} https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${getRepoPath(
 					repoFullname
 				)}`
 			);

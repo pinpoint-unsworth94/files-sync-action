@@ -13,7 +13,7 @@ const main = async () => {
 		const gitSrc = git.init(SRC_REPO);
 		const utilsSrc = require("./utils").init(SRC_REPO);
 
-		await gitSrc.clone();
+		await gitSrc.clone(true);
 		const srcFiles = await utilsSrc.getFiles();
 		const relativeSrcFiles = srcFiles.map((file) =>
 			utilsSrc.getRepoRelativeFilePath(file)
@@ -29,7 +29,7 @@ const main = async () => {
 				const gitRepo = git.init(repo);
 
 				// PREPARE TARGET
-				await gitRepo.clone();
+				await gitRepo.clone(false);
 				const targetFiles = await utilsRepo.getFiles();
 				const removedFiles = targetFiles.filter(
 					(file) =>
