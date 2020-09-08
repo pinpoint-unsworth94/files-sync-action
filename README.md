@@ -65,6 +65,10 @@ The username used to commit the synced files. Defaults to `process.env.GITHUB_AC
 
 Run everything except for secret create and update functionality. Defaults to `false`.
 
+### `TARGET_BRANCH`
+
+The target branches these should be deployed to. Defaults to `master`.
+
 ## Usage
 
 ```yaml
