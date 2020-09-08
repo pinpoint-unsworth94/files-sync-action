@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@actions/core": "^1.2.5",
 		"@actions/github": "^4.0.0",
+		"@epi/recursive-readdir": "github:epi-org/recursive-readdir",
 		"@putout/git-status-porcelain": "^1.1.0",
 		"recursive-readdir": "^2.2.2",
 		"rimraf": "^3.0.2"

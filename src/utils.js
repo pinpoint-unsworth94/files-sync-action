@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 const path = require("path");
-const listDir = require("recursive-readdir");
+const listDir = require("@epi/recursive-readdir");
 const rimraf = require("rimraf");
 
 const { TMPDIR, FILE_PATTERNS, DRY_RUN, SKIP_DELETE } = require("./context");
@@ -34,8 +34,7 @@ const init = (repoFullname) => {
 		});
 	};
 
-	const getFiles = async () => {
-		// TODO [#19]: evaluate if ignoring .git is a good idea
+	const getFiles = async (repo) => {
 		const files = await listDir(getRepoPath(), [".git"]);
 		logger.debug(
 			"FILES:",
