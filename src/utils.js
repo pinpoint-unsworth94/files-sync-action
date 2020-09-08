@@ -34,7 +34,7 @@ const init = (repoFullname) => {
 		});
 	};
 
-	const getFiles = async (repo) => {
+	const getFiles = async () => {
 		const files = await listDir(getRepoPath(), [".git"]);
 		logger.debug(
 			"FILES:",
