@@ -8,6 +8,7 @@ const {
 	GIT_USERNAME,
 	GIT_EMAIL,
 	DRY_RUN,
+	TARGET_BRANCH,
 } = require("./context");
 
 const interpolateCommitMessage = (message, data) => {
@@ -46,7 +47,7 @@ module.exports = {
 		const clone = async () => {
 			// TODO [#16]: allow customizing the branch
 			return execCmd(
-				`git clone --depth 1 https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${getRepoPath(
+				`git clone --depth 1 -b ${TARGET_BRANCH} --single-branch https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${getRepoPath(
 					repoFullname
 				)}`
 			);

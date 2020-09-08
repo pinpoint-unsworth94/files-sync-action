@@ -43,6 +43,9 @@ const context = {
 	TMPDIR:
 		core.getInput("TEMP_DIR", { required: false }) ||
 		`tmp-${Date.now().toString()}`,
+	TARGET_BRANCH:
+		core.getInput("TARGET_BRANCH", { required: false }) ||
+		`master`,
 };
 
 while (fs.existsSync(context.TMPDIR)) {

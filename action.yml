@@ -48,6 +48,10 @@ inputs:
     description: |
       The working directory where all sync operations will be done. Defaults to `tmp-${Date.now().toString()}`
     required: false
+  TARGET_BRANCH:
+    description: |
+      The target branches these should be deployed to. Defaults to `master`
+    required: false
 runs:
   main: dist/index.js
   using: node12
