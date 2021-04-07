@@ -100,7 +100,7 @@ module.exports = {
 					[
 						`git config --local user.name "${GIT_USERNAME}"`,
 						`git config --local user.email "${GIT_EMAIL}"`,
-						`git add -A -f`,
+						`git add -A`,
 						`git status`,
 						// TODO [#17]: improve commit message to contain more details about the changes
 						`git commit --message "${commitMessage}"`,
