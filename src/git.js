@@ -47,7 +47,7 @@ module.exports = {
 		const branchExists = async (branch) => {
 			let command = `git ls-remote --heads https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${TARGET_BRANCH}`
 			let output = await execCmd(command)
-			if (ouput != '') {
+			if (output != '') {
 				return true
 			}
 
