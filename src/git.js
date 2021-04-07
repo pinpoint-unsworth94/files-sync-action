@@ -44,10 +44,26 @@ module.exports = {
 			});
 		}
 
+		const branchExists = async (branch) => {
+			let command = `git ls-remote --heads https://${GITHUB_TOKEN}@github.com/${repoFullname}.git ${TARGET_BRANCH}`
+			let output = await execCmd(command)
+			if (ouput != '') {
+				return true
+			}
+
+			return false
+		};
+
 		const clone = async (is_base_repo) => {
 			let branch_cmd = '';
 			if (!is_base_repo) {
-				branch_cmd = `-b ${TARGET_BRANCH} --single-branch`;
+				let isActiveBranch = await branchExists(TARGET_BRANCH);
+				if (isActiveBranch) {
+						branch_cmd = `-b ${TARGET_BRANCH} --single-branch`;
+				} else {
+						//patch for cloud projects - staging is develop
+						branch_cmd = `-b staging --single-branch`;
+				}
 			}
 
 			// TODO [#16]: allow customizing the branch
@@ -63,6 +79,8 @@ module.exports = {
 				`git status --porcelain`,
 				getRepoPath(repoFullname)
 			);
+
+
 			return porcelainParse(statusOutput).length !== 0;
 		};
 
